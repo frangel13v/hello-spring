@@ -9,7 +9,6 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-                sh './mvnw'
                 sh './mvnw compile'
                 sh './mvnw spring-boot:run'
                 sh './mvnw test'
