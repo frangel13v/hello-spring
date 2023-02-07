@@ -7,18 +7,20 @@ pipeline {
     }
 
     stages {
-        stage('Start') {
-            steps {
-                sh './mvnw compile'
-                sh './mvnw test'
-                sh './mvnw package'
-            }
-        }
         stage('Build') {
             steps {
-                sh 'docker-compose build'
+                sh '''./mvnw package
+                docker-compose build
+                '''
             }
         }
+        
+        post {
+            always {
+                junit 'target/surefire-reports/*.xml'
+            }
+        }
+
         stage('Deploy') {
             steps {
                 sh '''docker-compose up -d
