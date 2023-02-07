@@ -12,7 +12,6 @@ pipeline {
                 sh './mvnw compile'
                 sh './mvnw test'
                 sh './mvnw package'
-                sh 'java -jar target/testing-web-complete-0.0.1-SNAPSHOT.jar'
             }
         }
         stage('Build') {
