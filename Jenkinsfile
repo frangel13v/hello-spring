@@ -10,7 +10,6 @@ pipeline {
         stage('Start') {
             steps {
                 sh './mvnw compile'
-                sh './mvnw spring-boot:run'
                 sh './mvnw test'
                 sh './mvnw package'
                 sh 'java -jar target/testing-web-complete-0.0.1-SNAPSHOT.jar'
